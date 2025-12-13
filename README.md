@@ -5,6 +5,14 @@ Fault tolerant multi-core programs with OTP, the BEAM actor framework.
 [![Package Version](https://img.shields.io/hexpm/v/gleam_otp)](https://hex.pm/packages/gleam_otp)
 [![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/gleam_otp/)
 
+Gleam programs running on the BEAM typically make use of OTP, Erlang's
+actor-based application framework. This package provides opinionated bindings
+to many of the core concepts of OTP, providing robust and type safe APIs for
+Gleam.
+
+This package is not a distinct OTP-inspired framework. The regular Erlang/OTP
+APIs can be use with and alongside this package without trouble.
+
 ```shell
 gleam add gleam_otp@1
 ```
@@ -46,16 +54,16 @@ pub type Message {
 }
 ```
 
-Gleam’s actor system is built with a few primary goals:
+This package is designed with a few primary goals:
 
 - Full type safety of actors and messages.
 - Be compatible with Erlang’s OTP actor framework.
 - Provide fault tolerance and self-healing through supervisors.
 - Have equivalent performance to Erlang’s OTP.
 
-This library documents its abstractions and functionality, but you may also wish
-to read the documentation or other material on Erlang’s OTP framework to get a
-fuller understanding of OTP, the problems it solves, and the motivations for its
+This package documents its abstractions and functionality, but you likely should
+read the documentation or other material on Erlang/OTP to get a fuller
+understanding of OTP, the problems it solves, and the motivations for its
 design.
 
 Not all Erlang/OTP functionality is included in this library. Some is not
@@ -102,7 +110,9 @@ benefits to a Gleam application.
 
 Actors do not yet support all OTP system messages, so some of the OTP debugging
 APIs may not be fully functional. These unsupported messages are discarded by
-actors.
+actors. If you find that you have a need for one of the unimplemented system
+messages, open an issue and we will implement support for it.
 
-If you find that you have a need for one of the unimplemented system messages, open
-an issue and we will implement support for it.
+This package has limited documentation for OTP itself, so attempting to use it
+without first studying the framework itself is likely to result in some
+confusion and sub-optimal code.
